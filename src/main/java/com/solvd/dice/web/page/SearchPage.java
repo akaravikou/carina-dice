@@ -6,7 +6,9 @@ import com.solvd.dice.web.component.SearchBlock;
 import com.zebrunner.carina.utils.R;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class SearchPage extends AbstractPage {
@@ -27,6 +29,7 @@ public class SearchPage extends AbstractPage {
     }
 
     public List<SearchBlock> getSearchBlocks(){
+        new WebDriverWait(driver, Duration.ofSeconds(2)).until(o -> !searchBlocks.isEmpty());
         return searchBlocks;
     }
 }
